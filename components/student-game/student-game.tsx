@@ -137,8 +137,6 @@ export function StudentGame() {
   const activePowerup = powerups.find((powerup) => powerup.type === state.reservedPowerup);
   const multiplier = confidenceMultiplier(state.confidence);
 
-  const chooseFlowScreen = (screen: GameScreen) => dispatch({ type: "set_nickname", nickname: state.nickname }) || setShowFlow(true);
-
   const mainContent = useMemo(() => {
     if (state.screen === "join") {
       return <JoinScreen state={state} dispatch={dispatch} />;
