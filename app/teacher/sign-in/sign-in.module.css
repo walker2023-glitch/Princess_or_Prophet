@@ -1,0 +1,11 @@
+.page { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #f7f3e9; color: #173b3f; }
+.card { width: min(100%, 460px); padding: 36px; border: 1px solid #d9e3df; border-radius: 24px; background: #fffdf8; box-shadow: 0 18px 50px rgba(28, 70, 68, .12); }
+.kicker { color: #16716b; font-family: monospace; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.card h1 { margin: 0 0 10px; font-size: 2.1rem; }
+.card p { color: #63777a; line-height: 1.5; }
+.card label { display: block; margin: 16px 0; color: #173b3f; font-weight: 700; }
+.card input { display: block; width: 100%; margin-top: 7px; border: 1px solid #d9e3df; border-radius: 10px; padding: 12px; }
+.card form button { width: 100%; border: 0; border-radius: 10px; padding: 13px; color: white; background: #16716b; font-weight: 800; cursor: pointer; }
+.linkButton { margin-top: 16px; border: 0; color: #16716b; background: transparent; cursor: pointer; }
+.demo { margin: 16px 0; border-radius: 10px; padding: 12px; color: #6a4c00; background: #fff1c2; font-size: .9rem; }
+.error { color: #a83d3d !important; font-weight: 700; }
