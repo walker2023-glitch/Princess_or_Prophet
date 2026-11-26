@@ -33,12 +33,13 @@ function writeLocal(packs: QuotePackSummary[]) {
 
 export async function listQuotePacks(): Promise<QuotePackSummary[]> {
   const client = getSupabaseBrowserClient();
+  const isReady = input.drafts.length > 0 && input.drafts.every((draft) => draft.reviewed);
 
   if (!client) {
     return readLocal();
   }
 
-  const { data, error } = await client
+  const { data, error } = await (client as any)
     .from("quote_packs")
     .select("id,title,description,status,updated_at,quotes(id,question_variations(id,reviewed,enabled))")
     .order("updated_at", { ascending: false });
@@ -74,7 +75,7 @@ export async function saveQuotePack(input: QuotePackInput): Promise<QuotePackSum
       id: typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : String(Date.now()),
       title: input.title,
       description: input.description,
-      status: input.drafts.every((draft) => draft.reviewed) ? "ready" : "draft",
+      status: isReady ? "ready" : "draft",
       quoteCount: 1,
       playableQuestionCount: input.drafts.filter((draft) => draft.reviewed).length,
       updatedAt: now
@@ -86,9 +87,9 @@ export async function saveQuotePack(input: QuotePackInput): Promise<QuotePackSum
   const { data: userData, error: userError } = await client.auth.getUser();
   if (userError || !userData.user) throw new Error("Sign in as a teacher before saving quote packs.");
 
-  const { data: pack, error: packError } = await client
+  const { data: pack, error: packError } = await (client as any)
     .from("quote_packs")
-    .insert({ owner_id: userData.user.id, title: input.title, description: input.description, status: "draft" })
+    .insert({ owner_id: userData.user.id, title: input.title, description: input.description, status: isReady ? "ready" : "draft" })
     .select("id,title,description,status,updated_at")
     .single();
 
@@ -107,7 +108,7 @@ export async function saveQuotePack(input: QuotePackInput): Promise<QuotePackSum
       source_url: input.quote.sourceUrl,
       explanation: input.quote.explanation,
       theme: input.quote.theme,
-      verification_status: input.drafts.every((draft) => draft.reviewed) ? "teacher_verified" : "draft",
+      verification_status: isReady ? "teacher_verified" : "draft",
       copyright_notes: ""
     })
     .select("id")
@@ -133,7 +134,7 @@ export async function saveQuotePack(input: QuotePackInput): Promise<QuotePackSum
     id: pack.id,
     title: pack.title,
     description: pack.description,
-    status: input.drafts.every((draft) => draft.reviewed) ? "ready" : "draft",
+    status: isReady ? "ready" : "draft",
     quoteCount: 1,
     playableQuestionCount: input.drafts.filter((draft) => draft.reviewed).length,
     updatedAt: pack.updated_at
