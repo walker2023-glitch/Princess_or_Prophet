@@ -33,8 +33,6 @@ function writeLocal(packs: QuotePackSummary[]) {
 
 export async function listQuotePacks(): Promise<QuotePackSummary[]> {
   const client = getSupabaseBrowserClient();
-  const isReady = input.drafts.length > 0 && input.drafts.every((draft) => draft.reviewed);
-
   if (!client) {
     return readLocal();
   }
@@ -68,6 +66,7 @@ export async function listQuotePacks(): Promise<QuotePackSummary[]> {
 
 export async function saveQuotePack(input: QuotePackInput): Promise<QuotePackSummary> {
   const client = getSupabaseBrowserClient();
+  const isReady = input.drafts.length > 0 && input.drafts.every((draft) => draft.reviewed);
 
   if (!client) {
     const now = new Date().toISOString();
