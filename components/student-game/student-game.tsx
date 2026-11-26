@@ -190,7 +190,7 @@ function JoinScreen({ state, dispatch }: { state: StudentGameState; dispatch: Re
     <section className={styles.card + " " + styles.narrowCard}>
       <span className={styles.iconTile}>⚑</span>
       <p className={styles.kicker}>Student game</p>
-      <h1>Prophets <em>or</em> Princesses?</h1>
+      <h1>Prophets <em className={styles.titleAccent}>or</em> Princesses?</h1>
       <p className={styles.goldText}>Can you tell who said it?</p>
       <p className={styles.muted}>Read quotes, choose your confidence, and climb the classroom track.</p>
       <label>Game room PIN<input value={state.gamePin} readOnly /></label>

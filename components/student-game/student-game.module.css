@@ -49,7 +49,7 @@
 }
 
 .brand strong { display: block; font-size: .83rem; letter-spacing: .08em; }
-.brand em, h1 em { color: #2dd4bf; font-style: normal; font-weight: 400; }
+.brand em, .titleAccent { color: #2dd4bf; font-style: normal; font-weight: 400; }
 .brand small { color: rgba(237, 216, 188, .7); font-size: .7rem; }
 .playerBadge { padding: 6px 10px; border: 1px solid rgba(45, 212, 191, .24); border-radius: 12px; background: rgba(7, 24, 17, .72); }
 .playerBadge > span { font-size: 1.4rem; }
