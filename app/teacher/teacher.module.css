@@ -1,0 +1,28 @@
+.page { min-height: 100vh; padding: 42px max(20px, calc((100% - 1120px) / 2)); color: #173b3f; background: #f7f3e9; }
+.header { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 28px; }
+.header h1, .panel h2 { margin: 0 0 8px; }
+.header p, .panel p { color: #63777a; line-height: 1.5; }
+.kicker { margin: 0 0 7px; color: #16716b !important; font-family: monospace; font-size: .75rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.actions a, .actions button, .panelHeading button, .launch { border: 0; border-radius: 10px; padding: 11px 14px; color: white; background: #16716b; font-weight: 800; text-decoration: none; cursor: pointer; }
+.actions a:nth-child(2) { color: #173b3f; background: #f1dfb5; }
+.demo, .error { margin: 0 0 18px; border-radius: 12px; padding: 13px 16px; }
+.demo { color: #6a4c00; background: #fff1c2; }
+.error { color: #8d2f2f; background: #ffe0e0; }
+.grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 20px; }
+.panel { padding: 26px; border: 1px solid #d9e3df; border-radius: 20px; background: #fffdf8; box-shadow: 0 18px 50px rgba(28, 70, 68, .08); }
+.panelHeading { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+.packList { display: grid; gap: 8px; margin-top: 18px; }
+.pack, .packSelected { display: block; width: 100%; border: 1px solid #d9e3df; border-radius: 12px; padding: 15px; color: #173b3f; background: white; text-align: left; cursor: pointer; }
+.packSelected { border: 2px solid #2c9b91; background: #effbf8; }
+.pack strong, .packSelected strong, .pack span, .packSelected span, .pack small, .packSelected small { display: block; }
+.pack span, .pack small, .empty { margin-top: 5px; color: #63777a; font-size: .82rem; }
+.panel label { display: block; margin: 14px 0; color: #173b3f; font-weight: 700; }
+.panel input[type="number"] { display: block; width: 100%; margin-top: 6px; border: 1px solid #d9e3df; border-radius: 9px; padding: 10px; }
+.checkbox { display: flex !important; align-items: center; gap: 8px; }
+.checkbox input { width: auto !important; margin: 0 !important; }
+.launch { width: 100%; margin-top: 12px; background: #0f2f22; }
+.room { margin-top: 18px; border-radius: 14px; padding: 18px; color: #173b3f; background: #e2faf5; text-align: center; }
+.room span, .room small { display: block; color: #63777a; }
+.room strong { display: block; margin: 5px; color: #16716b; font-family: monospace; font-size: 2rem; letter-spacing: .15em; }
+@media (max-width: 760px) { .header, .grid { display: flex; flex-direction: column; align-items: stretch; } }
