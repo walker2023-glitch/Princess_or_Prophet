@@ -225,6 +225,8 @@ function WaitingScreen({ state, dispatch }: { state: StudentGameState; dispatch:
 }
 
 function PowerupScreen({ state, dispatch }: { state: StudentGameState; dispatch: React.Dispatch<any> }) {
+  const activePowerup = powerups.find((powerup) => powerup.type === state.reservedPowerup);
+
   return (
     <section className={styles.card + " " + styles.wideCard}>
       <div className={styles.cardHeader}><div><p className={styles.kicker}>Pit stop · Before question {state.questionIndex + 1}</p><h2>Equip a power-up?</h2></div><b className={styles.goldText}>Inventory</b></div>
