@@ -21,6 +21,20 @@ export type QuotePackInput = {
 
 const LOCAL_KEY = "prophets-or-princesses.quote-packs";
 
+type SupabaseQuotePackRow = {
+  id: string;
+  title: string;
+  description: string;
+  status: "draft" | "ready" | "archived";
+  updated_at: string;
+  quotes?: Array<{
+    question_variations?: Array<{
+      reviewed: boolean;
+      enabled: boolean;
+    }> | null;
+  }> | null;
+};
+
 function readLocal(): QuotePackSummary[] {
   if (typeof window === "undefined") return [];
   const raw = window.localStorage.getItem(LOCAL_KEY);
@@ -44,7 +58,8 @@ export async function listQuotePacks(): Promise<QuotePackSummary[]> {
 
   if (error) throw error;
 
-  return (data ?? []).map((pack) => {
+  const packs = (data ?? []) as SupabaseQuotePackRow[];
+  return packs.map((pack) => {
     const quotes = pack.quotes ?? [];
     const playableQuestionCount = quotes.reduce(
       (total, quote) =>
